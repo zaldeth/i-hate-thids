@@ -75,40 +75,51 @@ function draw() {
   playerArcher.display();
   computerArcher.display()
 
- // Uncomment and use correct for loop to display arrow using showArrow() function
- for (var i=0; i<playerArrows.length; i++) 
- {
+ 
+ for (var i=0; i<playerArrows; i++) {
  showArrows(i, playerArrows);
+ showArrows(balls[i], i);
+
  }
+
+
+
+
+
 
 }
 
-
+/*********** Choose correct keyPressed() function out of these *************/
 
 function keyPressed() {
   if(keyCode === 32){
-    // create an arrow object and add into an array ; set its angle same as angle of playerArcher
+     //create an arrow object and add into an array ; set its angle same as angle of playerArcher
     var posX = playerArcher.body.position.x;
     var posY = playerArcher.body.position.y;
-    var angle = playerArcher.body.angle+PI/2;
+    var angle = playerArcher.body
     var arrow = new PlayerArrow(posX, posY, 100, 10);
     arrow.trajectory = [];
-    Matter.Body.setAngle(arrow.body, angle);
+    Matter.Body.setAngle(arrow.body);
     playerArrows.push(arrow);
   }
 }
 
-function keyReleased () {
+
+
+
+
+
+//function keyReleased () {
 
   if(keyCode === 32){
     //call shoot() function for each arrow in an array playerArrows
-    if (playerArrows.length) {
+    if (playerArrows.length) { 
       var angle = playerArcher.body.angle+PI/2;
       playerArrows[playerArrows.length - 1].shoot(angle);
     }
   }
 
-}
+//}
 //Display arrow and Tranjectory
 function showArrows(index, arrows) {
   arrows[index].display();
